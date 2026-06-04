@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 const data = {
   name: "SAM HIRSCH",
   title: "Market Research & Consumer Insights",
-  tagline: "Business Intelligence · Consumer Research · Data Analytics",
   about: "I am a specialist in market research and consumer insights, dedicated to uncovering the 'why' behind consumer behavior. Based in Pittsburgh, I leverage data analytics to translate complex datasets into actionable business strategies.",
   skills: {
     technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
@@ -95,7 +94,7 @@ const data = {
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
-    email: "mailto:samwhirsch@gmail.com",
+    email: "samwhirsch@gmail.com", // Changed to raw string for clipboard use
     substack: "https://substack.com/@samwhirsch"
   }
 };
@@ -107,7 +106,7 @@ const Navbar = () => (
       <div className="space-x-8 text-sm font-medium text-slate-500">
         <Link to="/about" className="hover:text-blue-600 transition-colors">About</Link>
         <Link to="/portfolio" className="hover:text-blue-600 transition-colors">Portfolio</Link>
-        <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">LinkedIn</a>
+        <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">LinkedIn</a>
       </div>
     </div>
   </nav>
@@ -190,7 +189,8 @@ const Portfolio = () => (
       <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Writing</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.writing.map((item, i) => (
-          <a key={i} href={item.link} target="_blank" rel="noreferrer" className="group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-600 hover:shadow-md transition-all">
+          <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" 
+             className="group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
             <p className="text-slate-500 mb-5 text-[15px] leading-relaxed">{item.description}</p>
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Read on Substack →</span>
@@ -204,7 +204,8 @@ const Portfolio = () => (
       <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Intelligence Tools</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.intelligenceTools.map((item, i) => (
-          <a key={i} href={item.link} target="_blank" rel="noreferrer" className="group p-7 bg-blue-50 border border-blue-100 rounded-2xl hover:border-blue-600 hover:shadow-md transition-all">
+          <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" 
+             className="group p-7 bg-blue-50 border border-blue-100 rounded-2xl hover:border-blue-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
             <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Launch App →</span>
@@ -218,7 +219,8 @@ const Portfolio = () => (
       <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Selected Case Studies</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.portfolio.map((item, i) => (
-          <div key={i} className="group p-8 bg-white border border-slate-200 rounded-2xl hover:border-blue-600 hover:shadow-md transition-all flex flex-col justify-between">
+          <div key={i} 
+               className="group p-8 bg-white border border-slate-200 rounded-2xl hover:border-blue-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap gap-2 mb-5">
                 {item.tags.map(tag => (
@@ -235,28 +237,76 @@ const Portfolio = () => (
   </div>
 );
 
-const App = () => (
-  <BrowserRouter>
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-      </Routes>
-      <footer className="max-w-5xl mx-auto px-6 py-16 border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <p className="font-semibold text-base mb-1 tracking-tight">SH<span className="text-blue-600">.</span></p>
-          <p className="text-slate-400 text-sm">{data.title}</p>
-        </div>
-        <div className="flex gap-8 font-medium text-sm text-slate-500">
-          <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">LinkedIn</a>
-          <a href={data.links.substack} target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors">Substack</a>
-          <a href={data.links.email} className="hover:text-blue-600 transition-colors">Email</a>
-        </div>
-      </footer>
-    </div>
-  </BrowserRouter>
-);
+const App = () => {
+  const [showScroll, setShowScroll] = useState(false);
+  const [copyStatus, setCopyStatus] = useState(false);
+
+  // Scroll to top logic
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScroll(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Copy email logic
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(data.links.email);
+    setCopyStatus(true);
+    setTimeout(() => setCopyStatus(false), 2000);
+  };
+
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white relative">
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+
+        {/* Scroll To Top Button */}
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-2xl transition-all duration-300 z-50 hover:bg-blue-700 ${showScroll ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+
+        <footer className="max-w-5xl mx-auto px-6 py-16 border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div>
+            <p className="font-semibold text-base mb-1 tracking-tight">SH<span className="text-blue-600">.</span></p>
+            <p className="text-slate-400 text-sm">{data.title}</p>
+          </div>
+          <div className="flex gap-8 font-medium text-sm text-slate-500 items-center">
+            <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">LinkedIn</a>
+            <a href={data.links.substack} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">Substack</a>
+            
+            <div className="relative">
+                <button 
+                  onClick={handleCopyEmail} 
+                  className="hover:text-blue-600 transition-colors flex items-center gap-1"
+                >
+                  Email
+                </button>
+                {copyStatus && (
+                  <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap">
+                    Copied to clipboard!
+                  </span>
+                )}
+            </div>
+          </div>
+        </footer>
+      </div>
+    </BrowserRouter>
+  );
+};
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
