@@ -4,14 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 const data = {
   name: "SAM HIRSCH",
-  title: "Data Analytics & Market Research",
-  tagline: "Translating complex data into actionimport React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-
-const data = {
-  name: "SAM HIRSCH",
-  title: "Market Research & Consumer Insights",
+  title: "Market Research and Consumer Insights",
   tagline: "Business Intelligence | Consumer Research and Insights | Data Analytics",
   about: "I am a specialist in market research and consumer insights, dedicated to uncovering the 'why' behind consumer behavior. Based in Pittsburgh, I leverage data analytics to translate complex datasets into actionable business strategies.",
   skills: {
@@ -26,10 +19,26 @@ const data = {
     { company: "Allegheny County Department of Human Services", role: "Student Intern" }
   ],
   portfolio: [
-    { title: "Analytical Athletics", description: "A blog providing data-driven insights to sports fans." },
-    { title: "Politics In America", description: "A research paper examining implications of demographics on political views." },
-    { title: "Food Insecurity", description: "A research paper assessing the root causes and effects of global food insecurity." },
-    { title: "Tableau Public", description: "A collection of data visualizations utilizing Tableau Desktop and Prep." }
+    { 
+      title: "Analytical Athletics", 
+      description: "A blog providing data-driven insights to sports fans, merging complex athletic performance metrics with accessible storytelling.",
+      tags: ["Data Visualization", "Sports Analytics"]
+    },
+    { 
+      title: "Politics In America", 
+      description: "A comprehensive research paper examining the deep-seated implications of demographics on modern political views and voting behavior.",
+      tags: ["Demographic Research", "Statistical Analysis"]
+    },
+    { 
+      title: "Food Insecurity", 
+      description: "An assessment of the root causes and effects of global food insecurity, utilizing data to highlight systemic challenges in supply chains.",
+      tags: ["Global Trends", "Policy Research"]
+    },
+    { 
+      title: "Tableau Public", 
+      description: "A professional collection of interactive data visualizations utilizing Tableau Desktop and Prep to solve business intelligence problems.",
+      tags: ["Tableau", "BI Dashboarding"]
+    }
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -38,27 +47,33 @@ const data = {
 };
 
 const Navbar = () => (
-  <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+  <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
     <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-      <Link to="/" className="font-bold text-xl tracking-tight text-black">{data.name}</Link>
-      <div className="space-x-8 text-sm font-medium text-gray-600">
-        <Link to="/about" className="hover:text-black transition-colors">About</Link>
-        <Link to="/portfolio" className="hover:text-black transition-colors">Portfolio</Link>
-        <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-black transition-colors">LinkedIn</a>
+      <Link to="/" className="font-bold text-xl tracking-tighter text-black uppercase">{data.name}</Link>
+      <div className="space-x-8 text-sm font-bold uppercase tracking-widest text-gray-600">
+        <Link to="/about" className="hover:text-blue-600 transition-colors">About</Link>
+        <Link to="/portfolio" className="hover:text-blue-600 transition-colors">Portfolio</Link>
+        <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-600 transition-colors text-blue-500">LinkedIn</a>
       </div>
     </div>
   </nav>
 );
 
 const Home = () => (
-  <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
+  <div className="max-w-5xl mx-auto px-6 pt-40 pb-20">
     <div className="max-w-3xl">
-      <h1 className="text-6xl font-extrabold tracking-tight mb-6 text-black">{data.name}</h1>
-      <h2 className="text-3xl text-gray-600 mb-8 font-medium">{data.title}</h2>
-      <p className="text-xl text-gray-500 leading-relaxed mb-10">{data.tagline}</p>
-      <div className="flex gap-4">
-        <Link to="/portfolio" className="px-8 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors">View Portfolio</Link>
-        <Link to="/about" className="px-8 py-3 border border-gray-200 rounded-full font-medium hover:bg-gray-50 transition-colors">About Me</Link>
+      <h1 className="text-7xl md:text-8xl font-black tracking-tighter mb-6 text-black leading-none">
+        SAM<br/><span className="text-blue-600">HIRSCH.</span>
+      </h1>
+      <h2 className="text-2xl md:text-3xl text-gray-800 mb-8 font-medium italic">{data.title}</h2>
+      <p className="text-xl text-gray-500 leading-relaxed mb-10 max-w-xl">{data.tagline}</p>
+      <div className="flex flex-wrap gap-4">
+        <Link to="/portfolio" className="px-10 py-4 bg-black text-white rounded-full font-bold hover:bg-blue-600 transition-all shadow-xl hover:-translate-y-1">
+          View Portfolio
+        </Link>
+        <Link to="/about" className="px-10 py-4 border-2 border-gray-200 rounded-full font-bold hover:border-black transition-all hover:-translate-y-1">
+          About Me
+        </Link>
       </div>
     </div>
   </div>
@@ -66,41 +81,41 @@ const Home = () => (
 
 const About = () => (
   <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
-    <h2 className="text-4xl font-bold mb-12 text-black">About</h2>
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-      <div className="lg:col-span-2 space-y-12">
-        <section>
-          <p className="text-xl text-gray-600 leading-relaxed">{data.about}</p>
-        </section>
+      <div className="lg:col-span-2">
+        <h2 className="text-5xl font-black mb-8 uppercase tracking-tight">The <span className="text-blue-600">Why</span> Behind the Data</h2>
+        <p className="text-xl text-gray-600 leading-relaxed mb-12">{data.about}</p>
         
-        <section>
-          <h3 className="text-2xl font-bold mb-6 text-black">Professional Experience</h3>
-          <div className="space-y-6">
-            {data.experience.map((exp, i) => (
-              <div key={i} className="border-l-2 border-gray-100 pl-6">
-                <h4 className="font-bold text-lg">{exp.company}</h4>
-                <p className="text-gray-600">{exp.role}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+          <span className="w-8 h-1 bg-blue-600"></span> Professional Experience
+        </h3>
+        <div className="space-y-8">
+          {data.experience.map((exp, i) => (
+            <div key={i} className="group relative pl-8 border-l-2 border-gray-100 hover:border-blue-600 transition-colors">
+              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-white border-2 border-gray-200 rounded-full group-hover:border-blue-600 transition-colors"></div>
+              <h4 className="font-bold text-xl">{exp.company}</h4>
+              <p className="text-blue-600 font-medium">{exp.role}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="space-y-10">
-        <section>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Technical Tools</h3>
+      <div className="space-y-12">
+        <section className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+          <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-6">Technical Tools</h3>
           <div className="flex flex-wrap gap-2">
             {data.skills.technical.map(skill => (
-              <span key={skill} className="px-3 py-1 bg-gray-50 text-gray-600 rounded-md text-sm border border-gray-100">{skill}</span>
+              <span key={skill} className="px-3 py-1.5 bg-white text-gray-800 rounded-lg text-xs font-bold border border-gray-200 shadow-sm">{skill}</span>
             ))}
           </div>
         </section>
-        <section>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Analytical Capabilities</h3>
-          <ul className="space-y-2 text-gray-600">
+
+        <section className="px-4">
+          <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-6">Capabilities</h3>
+          <ul className="space-y-4 text-gray-700 font-medium">
             {data.skills.analytical.map(cap => (
-              <li key={cap} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-black rounded-full"></span>
+              <li key={cap} className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                 {cap}
               </li>
             ))}
@@ -113,16 +128,29 @@ const About = () => (
 
 const Portfolio = () => (
   <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
-    <h2 className="text-4xl font-bold mb-12 text-black">Portfolio</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="mb-16">
+      <h2 className="text-5xl font-black mb-4 uppercase tracking-tight">Portfolio</h2>
+      <p className="text-gray-500 text-xl">Selected case studies and research projects.</p>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
       {data.portfolio.map((item, i) => (
-        <div key={i} className="group p-8 bg-white border border-gray-100 rounded-3xl hover:border-black transition-all duration-300 shadow-sm hover:shadow-xl">
-          <h3 className="text-2xl font-bold mb-4 group-hover:text-black transition-colors">{item.title}</h3>
-          <p className="text-gray-500 leading-relaxed mb-6">{item.description}</p>
-          <div className="inline-flex items-center font-bold text-sm uppercase tracking-wider text-black cursor-pointer">
-            Learn More 
-            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <div key={i} className="group p-10 bg-white border border-gray-200 rounded-[2rem] hover:border-blue-600 transition-all duration-500 shadow-sm hover:shadow-2xl flex flex-col justify-between">
+          <div>
+            <div className="flex gap-2 mb-6">
+              {item.tags.map(tag => (
+                <span key={tag} className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 className="text-3xl font-bold mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+            <p className="text-gray-500 leading-relaxed mb-8">{item.description}</p>
+          </div>
+          <div className="inline-flex items-center font-black text-xs uppercase tracking-[0.2em] text-black cursor-pointer group-hover:gap-4 transition-all gap-2">
+            Explore Project 
+            <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </div>
         </div>
@@ -133,18 +161,21 @@ const Portfolio = () => (
 
 const App = () => (
   <BrowserRouter>
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-blue-600 selection:text-white">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
-      <footer className="max-w-5xl mx-auto px-6 py-12 border-t border-gray-100 text-sm text-gray-400 flex justify-between items-center">
-        <p>© 2026 {data.name}</p>
-        <div className="space-x-6">
-          <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-black transition-colors">LinkedIn</a>
-          <a href={data.links.email} className="hover:text-black transition-colors">Email</a>
+      <footer className="max-w-5xl mx-auto px-6 py-20 border-t border-gray-100 mt-20 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+          <p className="font-bold text-lg mb-1">© 2026 {data.name}</p>
+          <p className="text-gray-400 text-sm italic">{data.title}</p>
+        </div>
+        <div className="flex gap-8 font-bold text-sm uppercase tracking-widest">
+          <a href={data.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-600">LinkedIn</a>
+          <a href={data.links.email} className="hover:text-blue-600">Email</a>
         </div>
       </footer>
     </div>
@@ -156,40 +187,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
-able business strategy."
-};
-
-const Home = () => (
-  <div className="max-w-4xl mx-auto px-6 pt-32">
-    <h1 className="text-8xl font-black tracking-tighter mb-4">
-      {data.name.split(' ')[0]}<br/>
-      <span className="text-blue-600">{data.name.split(' ')[1]}</span>
-    </h1>
-    <p className="text-2xl text-gray-600 mb-8">{data.title}</p>
-    <p className="text-xl max-w-xl leading-relaxed text-gray-500 mb-10">{data.tagline}</p>
-    <div className="flex gap-4">
-      <Link to="/portfolio" className="bg-black text-white px-8 py-4 rounded-full font-bold">View Portfolio</Link>
-      <Link to="/about" className="border border-gray-300 px-8 py-4 rounded-full font-bold">About Me</Link>
-    </div>
-  </div>
-);
-
-const App = () => (
-  <BrowserRouter>
-    <nav className="p-6 flex justify-between items-center fixed w-full bg-white/80 backdrop-blur-md">
-      <Link to="/" className="font-bold text-xl">SH.</Link>
-      <div className="space-x-6 text-sm font-bold uppercase">
-        <Link to="/">Home</Link>
-        <Link to="/portfolio">Portfolio</Link>
-        <Link to="/about">About</Link>
-      </div>
-    </nav>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/portfolio" element={<div className="pt-32 px-6">Portfolio Page Coming Next...</div>} />
-      <Route path="/about" element={<div className="pt-32 px-6">About Page Coming Next...</div>} />
-    </Routes>
-  </BrowserRouter>
-)
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
