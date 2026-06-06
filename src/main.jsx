@@ -31,7 +31,7 @@ const data = {
     { title: "Tableau Public", description: "A professional collection of interactive data visualizations utilizing Tableau Desktop and Prep.", tags: ["Tableau", "BI Dashboarding"] }
   ],
   writing: [
-    { title: "The Shift in Consumer Demand Signals", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
+    { title: "Last Call? How a Generation's Sobriety Is Reshaping a $110B Industry", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
     { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack"] },
   ],
   links: {
@@ -178,7 +178,7 @@ const Portfolio = () => (
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
-              className={`group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm ${i === 0 ? 'md:col-span-2' : ''}`}
+              className="group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm"
             >
               {item.tags.includes("Featured") && (
                 <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">
@@ -246,7 +246,6 @@ const App = () => {
       </AnimatePresence>
 
       <footer className="max-w-5xl mx-auto px-6 py-16 border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
-        <p>© {new Date().getFullYear()} {data.name}</p>
         <div className="flex gap-6">
           <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">LinkedIn</a>
           <a href={data.links.substack} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">Substack</a>
