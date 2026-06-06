@@ -32,7 +32,7 @@ const data = {
   ],
   writing: [
     { title: "Last Call? How a Generation's Sobriety Is Reshaping a $110B Industry", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
-    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack"] },
+    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack", "New"] },
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -183,6 +183,11 @@ const Portfolio = () => (
               {item.tags.includes("Featured") && (
                 <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">
                   Featured
+                </span>
+              )}
+              {item.tags.includes("New") && (
+                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-green-700 bg-green-50 border border-green-200 rounded px-2 py-0.5 mb-3">
+                  New
                 </span>
               )}
               <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
