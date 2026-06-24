@@ -37,6 +37,8 @@ const data = {
   writing: [
     { title: "The Shift in Consumer Demand Signals", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
     { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack", "New"] },
+    { title: "A Tale of Two Seasons: A Kenny Pickett Data Driven Analysis", description: "A data-driven evaluation of Kenny Pickett's rookie season with the Pittsburgh Steelers, using EPA, QBR, and accuracy metrics to uncover the story behind the numbers.", link: "https://substack.com/@samwhirsch/p-203446728", tags: ["Substack", "Sports"], year: "2023" },
+    { title: "Catching Fire: How the Miami Heat Made the 2023 NBA Finals", description: "A statistical breakdown of the Miami Heat's improbable run to the 2023 NBA Finals as an 8th seed — examining how elite coaching and suffocating defense overcame a last-place offense.", link: "https://substack.com/@samwhirsch/p-203445462", tags: ["Substack", "Sports"], year: "2023" },
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -194,11 +196,17 @@ const Portfolio = () => (
                   New
                 </span>
               )}
+              {item.tags.includes("Sports") && (
+                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-200 rounded px-2 py-0.5 mb-3">
+                  Sports
+                </span>
+              )}
               <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+              {item.year && <p className="text-xs text-slate-400 mb-2">{item.year}</p>}
               <p className="text-slate-500 mb-5 text-[15px] leading-relaxed">{item.description}</p>
               <div className="flex items-center justify-between">
                 <div className="flex gap-2 flex-wrap">
-                  {item.tags.filter(t => t !== "Featured" && t !== "New").map(tag => (
+                  {item.tags.filter(t => t !== "Featured" && t !== "New" && t !== "Sports").map(tag => (
                     <span key={tag} className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">{tag}</span>
                   ))}
                 </div>
