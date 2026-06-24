@@ -20,6 +20,10 @@ const data = {
     { company: "Syracuse Jewish Family Service", role: "Student Researcher", description: "Led data collection and analysis of referral sources for a geriatric care nonprofit." },
     { company: "Allegheny County Department of Human Services", role: "Student Intern", description: "Supported the Community Choice Demonstration, a HUD-facilitated housing voucher program." }
   ],
+  sportsTools: [
+    { title: "FIFA World Cup 2026 — Bracket Predictor", description: "Probabilistic forecasts from 1,000 full-tournament Monte Carlo simulations built on 49,000+ historical matches, Elo ratings, betting market odds, Polymarket prices, and FIFA rankings.", link: "https://fifaworldcup26.streamlit.app/", tags: ["Monte Carlo", "Elo Ratings", "Python"] },
+    { title: "Fantasy Football Auction Draft Board", description: "A personal auction draft tool for a 16-team full PPR league. Pulls live ESPN and Sleeper projections, calculates VORP/VOLS, tracks inflation, and surfaces per-dollar value in real time.", link: "https://fafootball.streamlit.app/", tags: ["Python", "Streamlit", "ESPN API"] },
+  ],
   intelligenceTools: [
     { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 6 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
     { title: "News Intelligence", description: "An analytics tool designed to track and quantify brand sentiment across global news outlets.", link: "https://newsbpc.streamlit.app/", tags: ["Data Scraping", "Sentiment Analysis"] }
@@ -199,6 +203,36 @@ const Portfolio = () => (
                   ))}
                 </div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Read on Substack →</span>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-20">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900">Sports Tools</h2>
+          <span className="text-xs font-semibold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200 rounded px-2 py-0.5">In-Progress</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {data.sportsTools.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              className="group p-7 bg-orange-50 border border-orange-100 rounded-2xl hover:border-orange-400 hover:shadow-md transition-all"
+            >
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-orange-600 transition-colors">{item.title}</h3>
+              <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2 flex-wrap">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="text-xs text-orange-700 bg-orange-100 border border-orange-200 rounded px-2 py-0.5">{tag}</span>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-orange-600 shrink-0 ml-4">Launch App →</span>
               </div>
             </motion.a>
           ))}
