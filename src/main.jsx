@@ -218,6 +218,33 @@ const Portfolio = () => (
       </div>
 
       <div className="mb-20">
+        <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Intelligence Tools</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {data.intelligenceTools.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              className="group p-7 bg-blue-50 border border-blue-100 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all"
+            >
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+              <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2 flex-wrap">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="text-xs text-blue-600 bg-blue-100 border border-blue-200 rounded px-2 py-0.5">{tag}</span>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Launch App →</span>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+
+      <div>
         <div className="flex items-center gap-4 mb-8">
           <h2 className="text-3xl font-bold tracking-tight text-slate-900">Sports Tools</h2>
           <span className="text-xs font-semibold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200 rounded px-2 py-0.5">In-Progress</span>
@@ -241,33 +268,6 @@ const Portfolio = () => (
                   ))}
                 </div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-orange-600 shrink-0 ml-4">Launch App →</span>
-              </div>
-            </motion.a>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Intelligence Tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {data.intelligenceTools.map((item, i) => (
-            <motion.a
-              key={i}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -4 }}
-              className="group p-7 bg-blue-50 border border-blue-100 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all"
-            >
-              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-              <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2 flex-wrap">
-                  {item.tags.map(tag => (
-                    <span key={tag} className="text-xs text-blue-600 bg-blue-100 border border-blue-200 rounded px-2 py-0.5">{tag}</span>
-                  ))}
-                </div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Launch App →</span>
               </div>
             </motion.a>
           ))}
