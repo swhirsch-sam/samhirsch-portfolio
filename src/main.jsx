@@ -32,7 +32,7 @@ const data = {
   ],
   writing: [
     { title: "The Shift in Consumer Demand Signals", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
-    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack"] },
+    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack", "New"] },
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -178,18 +178,23 @@ const Portfolio = () => (
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
-              className={`group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm ${i === 0 ? 'md:col-span-2' : ''}`}
+              className="group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm"
             >
               {item.tags.includes("Featured") && (
                 <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">
                   Featured
                 </span>
               )}
+              {item.tags.includes("New") && (
+                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-2 py-0.5 mb-3">
+                  New
+                </span>
+              )}
               <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
               <p className="text-slate-500 mb-5 text-[15px] leading-relaxed">{item.description}</p>
               <div className="flex items-center justify-between">
                 <div className="flex gap-2 flex-wrap">
-                  {item.tags.filter(t => t !== "Featured").map(tag => (
+                  {item.tags.filter(t => t !== "Featured" && t !== "New").map(tag => (
                     <span key={tag} className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">{tag}</span>
                   ))}
                 </div>
