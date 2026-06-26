@@ -25,6 +25,10 @@ const data = {
     { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 6 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
     { title: "News Intelligence", description: "An analytics tool designed to track and quantify brand sentiment across global news outlets.", link: "https://newsbpc.streamlit.app/", tags: ["Data Scraping", "Sentiment Analysis"] }
   ],
+  sportsTools: [
+    { title: "FIFA World Cup 2026 — Bracket Predictor", description: "Probabilistic forecasts from 1,000 full-tournament Monte Carlo simulations built on 49,000+ historical matches, Elo ratings, betting market odds, Polymarket prices, and FIFA rankings.", link: "https://fifaworldcup26.streamlit.app/", tags: ["Monte Carlo", "Elo Ratings", "Python"], inProgress: true },
+    { title: "Fantasy Football Auction Draft Board", description: "A personal auction draft tool for a 16-team full PPR league. Pulls live ESPN and Sleeper projections, calculates VORP/VOLS, tracks inflation, and surfaces per-dollar value in real time.", link: "https://fafootball.streamlit.app/", tags: ["Python", "Streamlit", "ESPN API"], inProgress: true }
+  ],
   portfolio: [
     { title: "Analytical Athletics", description: "A blog providing data-driven insights to sports fans, merging complex performance metrics with storytelling.", tags: ["Data Visualization", "Sports Analytics"] },
     { title: "Politics In America", description: "A research paper examining the deep-seated implications of demographics on modern political views.", tags: ["Demographic Research", "Statistical Analysis"] },
@@ -33,7 +37,9 @@ const data = {
   ],
   writing: [
     { title: "The Shift in Consumer Demand Signals", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
-    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack"] },
+    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack", "New"] },
+    { title: "A Tale of Two Seasons: A Kenny Pickett Data Driven Analysis", description: "A data-driven evaluation of Kenny Pickett's rookie season with the Pittsburgh Steelers, using EPA, QBR, and accuracy metrics to uncover the story behind the numbers.", link: "https://substack.com/@samwhirsch/note/p-203446728", tags: ["Substack", "Sports"], year: "2023" },
+    { title: "Catching Fire: How the Miami Heat Made the 2023 NBA Finals", description: "A statistical breakdown of the Miami Heat's improbable run to the 2023 NBA Finals as an 8th seed — examining how elite coaching and suffocating defense overcame a last-place offense.", link: "https://substack.com/@samwhirsch/p-203445462", tags: ["Substack", "Sports"], year: "2023" },
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -129,11 +135,9 @@ const Home = () => (
         </div>
         <div className="hidden md:block w-px h-12 bg-slate-200" />
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Clients</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Client</p>
           <div className="flex flex-wrap gap-2">
-            {["Coca-Cola", "Google", "Verizon", "Ford"].map(c => (
-              <span key={c} className="px-3 py-1.5 bg-white text-slate-600 rounded-lg text-xs font-medium border border-slate-200">{c}</span>
-            ))}
+            <span className="px-3 py-1.5 bg-white text-slate-600 rounded-lg text-xs font-medium border border-slate-200">Google</span>
           </div>
         </div>
         <div className="hidden md:block w-px h-12 bg-slate-200" />
@@ -268,8 +272,10 @@ const About = () => (
 
 const Portfolio = () => (
   <PageWrapper>
-    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-      <div className="mb-20">
+    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-20">
+
+      {/* Writing */}
+      <div>
         <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Writing</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.writing.map((item, i) => (
@@ -281,19 +287,22 @@ const Portfolio = () => (
               whileHover={{ y: -4 }}
               className={`group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm ${i === 0 ? 'md:col-span-2' : ''}`}
             >
-              {item.tags.includes("Featured") && (
-                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">
-                  Featured
-                </span>
-              )}
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                {item.tags.includes("Featured") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5">Featured</span>
+                )}
+                {item.tags.includes("New") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-2 py-0.5">New</span>
+                )}
+                {item.tags.includes("Sports") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 rounded px-2 py-0.5">Sports</span>
+                )}
+                {item.year && <span className="text-xs text-slate-400">{item.year}</span>}
+              </div>
               <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
               <p className="text-slate-500 mb-5 text-[15px] leading-relaxed">{item.description}</p>
               <div className="flex items-center justify-between">
-                <div className="flex gap-2 flex-wrap">
-                  {item.tags.filter(t => t !== "Featured").map(tag => (
-                    <span key={tag} className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">{tag}</span>
-                  ))}
-                </div>
+                <span className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">Substack</span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Read on Substack →</span>
               </div>
             </motion.a>
@@ -301,6 +310,7 @@ const Portfolio = () => (
         </div>
       </div>
 
+      {/* Intelligence Tools */}
       <div>
         <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Intelligence Tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -327,6 +337,40 @@ const Portfolio = () => (
           ))}
         </div>
       </div>
+
+      {/* Sports Tools */}
+      <div>
+        <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Sports Tools</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {data.sportsTools.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              className="group p-7 bg-slate-50 border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                {item.inProgress && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200 rounded px-2 py-0.5">In Progress</span>
+                )}
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+              <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2 flex-wrap">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="text-xs text-slate-500 bg-white border border-slate-200 rounded px-2 py-0.5">{tag}</span>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Launch App →</span>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+
     </div>
   </PageWrapper>
 );
