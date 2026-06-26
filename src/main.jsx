@@ -104,7 +104,7 @@ const Home = () => (
         >
           Sam<br /><span className="text-blue-600">Hirsch.</span>
         </motion.h1>
-        <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">{data.tagline}</p>
+        <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">Associate Analyst, Insights, Data & Intelligence at <a href="https://www.burson.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Burson</a>. Market research and consumer insights specialist working at the intersection of social intelligence, PR strategy, and data analytics.</p>
         <div className="flex flex-wrap gap-4">
           <Link to="/portfolio" className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all shadow-sm hover:shadow-md">
             View Portfolio <span>→</span>
