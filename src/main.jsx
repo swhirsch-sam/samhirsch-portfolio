@@ -9,11 +9,11 @@ const data = {
   tagline: "Uncovering the 'why' behind consumer behavior through data analytics and AI-driven insights.",
   about: "I am a specialist in market research and consumer insights, dedicated to uncovering the 'why' behind consumer behavior. Based in Pittsburgh, I leverage data analytics to translate complex datasets into actionable business strategies.",
   skills: {
-    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
+    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "JavaScript", "Google Apps Script", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
     analytical: ["Predictive Analytics", "Data Modeling", "Forecasting", "Survey Design", "Dashboard Development", "Conjoint/MaxDiff Analysis", "Sentiment Analysis", "Social Listening", "AI-Powered App Development", "LLM Integration", "A/B Testing"]
   },
   experience: [
-    { company: "Burson", role: "Associate Analyst, Insights, Data & Intelligence", description: "Supporting global clients including Google by identifying PR risks, evaluating advertising opportunities, and assessing ongoing campaigns through digital intelligence and research." },
+    { company: "Burson", role: "Associate Analyst, Insights, Data & Intelligence", description: "Tracking brand sentiment and digital conversation across social media, news, and online platforms for clients including Coca-Cola, Google, Verizon, and Ford. Translating social and digital intelligence into PR and marketing strategy across three dimensions: promoting what's resonating, protecting against emerging risks, and predicting market opportunities." },
     { company: "First Insight Inc", role: "Insight Specialist", description: "Led consumer research programs for Under Armour, Li & Fung, and Marks & Spencer. Used AI-powered predictive analytics to sharpen demand forecasting." },
     { company: "Kantar", role: "Data Strategy and Operations Intern", description: "Built 19 Power BI models for enterprise retail and CPG clients. Published AI implementation research reaching 66 clients." },
     { company: "M@C Discount", role: "Analytics Intern", description: "Analyzed purchasing behavior and promotional systems across 26 warehouse locations." },
