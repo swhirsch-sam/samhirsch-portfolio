@@ -22,7 +22,7 @@ const data = {
     { company: "Allegheny County Department of Human Services", role: "Student Intern", description: "Supported the Community Choice Demonstration, a HUD-facilitated housing voucher program." }
   ],
   intelligenceTools: [
-    { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 6 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
+    { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 4 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
     { title: "News Intelligence", description: "An analytics tool designed to track and quantify brand sentiment across global news outlets.", link: "https://newsbpc.streamlit.app/", tags: ["Data Scraping", "Sentiment Analysis"] }
   ],
   sportsTools: [
@@ -192,11 +192,11 @@ const Home = () => (
           className="group bg-blue-50 border border-blue-100 rounded-2xl p-7 hover:border-blue-500 hover:shadow-md transition-all block"
         >
           <p className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-3">Intelligence Tool</p>
-          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{data.intelligenceTools[0].title}</h3>
-          <p className="text-slate-600 text-sm leading-relaxed mb-4">{data.intelligenceTools[0].description}</p>
+          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{data.intelligenceTools[1].title}</h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">{data.intelligenceTools[1].description}</p>
           <div className="flex items-center justify-between">
             <div className="flex gap-2 flex-wrap">
-              {data.intelligenceTools[0].tags.map(tag => (
+              {data.intelligenceTools[1].tags.map(tag => (
                 <span key={tag} className="text-xs text-blue-600 bg-blue-100 border border-blue-200 rounded px-2 py-0.5">{tag}</span>
               ))}
             </div>
