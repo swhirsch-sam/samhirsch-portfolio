@@ -9,10 +9,11 @@ const data = {
   tagline: "Uncovering the 'why' behind consumer behavior through data analytics and AI-driven insights.",
   about: "I am a specialist in market research and consumer insights, dedicated to uncovering the 'why' behind consumer behavior. Based in Pittsburgh, I leverage data analytics to translate complex datasets into actionable business strategies.",
   skills: {
-    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
+    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "JavaScript", "Google Apps Script", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
     analytical: ["Predictive Analytics", "Data Modeling", "Forecasting", "Survey Design", "Dashboard Development", "Conjoint/MaxDiff Analysis", "Sentiment Analysis", "Social Listening", "AI-Powered App Development", "LLM Integration", "A/B Testing"]
   },
   experience: [
+    { company: "Burson", role: "Associate Analyst, Insights, Data & Intelligence", description: "Tracking brand sentiment and digital conversation across social media, news, and online platforms for Fortune 500 clients. Translating social and digital intelligence into PR and marketing strategy across three dimensions: promoting what's resonating, protecting against emerging risks, and predicting market opportunities." },
     { company: "First Insight Inc", role: "Insight Specialist", description: "Led consumer research programs for Under Armour, Li & Fung, and Marks & Spencer. Used AI-powered predictive analytics to sharpen demand forecasting." },
     { company: "Kantar", role: "Data Strategy and Operations Intern", description: "Built 19 Power BI models for enterprise retail and CPG clients. Published AI implementation research reaching 66 clients." },
     { company: "M@C Discount", role: "Analytics Intern", description: "Analyzed purchasing behavior and promotional systems across 26 warehouse locations." },
@@ -21,8 +22,12 @@ const data = {
     { company: "Allegheny County Department of Human Services", role: "Student Intern", description: "Supported the Community Choice Demonstration, a HUD-facilitated housing voucher program." }
   ],
   intelligenceTools: [
-    { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 6 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
+    { title: "Brand Pulse Check", description: "A social intelligence tool that understands brand sentiment across 4 social media platforms.", link: "https://brandpulsecheck.streamlit.app/", tags: ["Python", "Streamlit", "NLP"] },
     { title: "News Intelligence", description: "An analytics tool designed to track and quantify brand sentiment across global news outlets.", link: "https://newsbpc.streamlit.app/", tags: ["Data Scraping", "Sentiment Analysis"] }
+  ],
+  sportsTools: [
+    { title: "FIFA World Cup 2026 — Bracket Predictor", description: "Probabilistic forecasts from 1,000 full-tournament Monte Carlo simulations built on 49,000+ historical matches, Elo ratings, betting market odds, Polymarket prices, and FIFA rankings.", link: "https://fifaworldcup26.streamlit.app/", tags: ["Monte Carlo", "Elo Ratings", "Python"], inProgress: true },
+    { title: "Fantasy Football Auction Draft Board", description: "A personal auction draft tool for a 16-team full PPR league. Pulls live ESPN and Sleeper projections, calculates VORP/VOLS, tracks inflation, and surfaces per-dollar value in real time.", link: "https://fafootball.streamlit.app/", tags: ["Python", "Streamlit", "ESPN API"], inProgress: true }
   ],
   portfolio: [
     { title: "Analytical Athletics", description: "A blog providing data-driven insights to sports fans, merging complex performance metrics with storytelling.", tags: ["Data Visualization", "Sports Analytics"] },
@@ -32,7 +37,9 @@ const data = {
   ],
   writing: [
     { title: "The Shift in Consumer Demand Signals", description: "A deep dive into how modern brands are interpreting digital demand signals to stay ahead of consumer behavior.", link: "https://substack.com/@samwhirsch/p-197761529", tags: ["Substack", "Featured"] },
-    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack"] },
+    { title: "Why Buy New? Inside the $78 Billion Secondhand Boom", description: "An exploration of the resale economy's explosive growth and what it signals about shifting consumer values and brand strategy.", link: "https://substack.com/@samwhirsch/p-200896197", tags: ["Substack", "New"] },
+    { title: "A Tale of Two Seasons: A Kenny Pickett Data Driven Analysis", description: "A data-driven evaluation of Kenny Pickett's rookie season with the Pittsburgh Steelers, using EPA, QBR, and accuracy metrics to uncover the story behind the numbers.", link: "https://substack.com/@samwhirsch/note/p-203446728", tags: ["Substack", "Sports"], year: "2023" },
+    { title: "Catching Fire: How the Miami Heat Made the 2023 NBA Finals", description: "A statistical breakdown of the Miami Heat's improbable run to the 2023 NBA Finals as an 8th seed — examining how elite coaching and suffocating defense overcame a last-place offense.", link: "https://substack.com/@samwhirsch/p-203445462", tags: ["Substack", "Sports"], year: "2023" },
   ],
   links: {
     linkedin: "https://www.linkedin.com/in/samwhirsch",
@@ -84,7 +91,8 @@ const Navbar = () => (
 
 const Home = () => (
   <PageWrapper>
-    <div className="relative max-w-5xl mx-auto px-6 pt-40 pb-24 overflow-hidden">
+    {/* Hero */}
+    <div className="relative max-w-5xl mx-auto px-6 pt-40 pb-10 overflow-hidden">
       <div className="absolute -top-10 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
       <div className="absolute top-72 right-32 w-48 h-48 bg-indigo-50 rounded-full blur-2xl opacity-50 pointer-events-none" />
       <div className="relative max-w-3xl">
@@ -103,7 +111,9 @@ const Home = () => (
         >
           Sam<br /><span className="text-blue-600">Hirsch.</span>
         </motion.h1>
-        <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">{data.tagline}</p>
+        <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl">
+          Associate Analyst, Insights, Data & Intelligence at <a href="https://www.burson.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Burson</a>. Market research and consumer insights specialist working at the intersection of social intelligence, PR strategy, and data analytics.
+        </p>
         <div className="flex flex-wrap gap-4">
           <Link to="/portfolio" className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all shadow-sm hover:shadow-md">
             View Portfolio <span>→</span>
@@ -112,6 +122,94 @@ const Home = () => (
             About Me
           </Link>
         </div>
+      </div>
+    </div>
+
+    {/* Currently At strip */}
+    <div className="max-w-5xl mx-auto px-6 pb-8">
+      <div className="bg-slate-50 border border-slate-200 rounded-2xl px-8 py-6 flex flex-wrap items-center gap-8">
+        <div className="shrink-0">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Currently At</p>
+          <p className="text-xl font-bold text-slate-900">Burson</p>
+          <p className="text-sm text-blue-600 font-medium">Associate Analyst, Insights, Data & Intelligence</p>
+        </div>
+        <div className="hidden md:block w-px h-12 bg-slate-200" />
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Tools</p>
+          <div className="flex flex-wrap gap-2">
+            {["Brandwatch", "Sprinklr"].map(t => (
+              <span key={t} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium border border-blue-100">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Skills + Portfolio grid */}
+    <div className="max-w-5xl mx-auto px-6 pb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        {/* Core Skills */}
+        <div className="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">Core Skills</h3>
+          <div className="flex flex-wrap gap-2">
+            {["SQL", "Tableau", "Power BI", "Python", "R", "Google Analytics"].map(s => (
+              <span key={s} className="px-3 py-1.5 bg-slate-50 text-slate-700 rounded-md text-xs font-medium border border-slate-200">{s}</span>
+            ))}
+            {["Social Listening", "Sentiment Analysis", "Predictive Analytics", "Survey Design"].map(s => (
+              <span key={s} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-md text-xs font-medium border border-blue-100">{s}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Featured Writing */}
+        <motion.a
+          href={data.writing[0].link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ y: -4 }}
+          className="group bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:border-blue-500 hover:shadow-md transition-all block"
+        >
+          <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">Featured</span>
+          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{data.writing[0].title}</h3>
+          <p className="text-slate-500 text-sm leading-relaxed mb-4">{data.writing[0].description}</p>
+          <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Read on Substack →</span>
+        </motion.a>
+
+        {/* Intelligence Tool */}
+        <motion.a
+          href={data.intelligenceTools[0].link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ y: -4 }}
+          className="group bg-blue-50 border border-blue-100 rounded-2xl p-7 hover:border-blue-500 hover:shadow-md transition-all block"
+        >
+          <p className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-3">Intelligence Tool</p>
+          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{data.intelligenceTools[1].title}</h3>
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">{data.intelligenceTools[1].description}</p>
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2 flex-wrap">
+              {data.intelligenceTools[1].tags.map(tag => (
+                <span key={tag} className="text-xs text-blue-600 bg-blue-100 border border-blue-200 rounded px-2 py-0.5">{tag}</span>
+              ))}
+            </div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Launch App →</span>
+          </div>
+        </motion.a>
+
+        {/* Second Writing */}
+        <motion.a
+          href={data.writing[1].link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ y: -4 }}
+          className="group bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:border-blue-500 hover:shadow-md transition-all block"
+        >
+          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">{data.writing[1].title}</h3>
+          <p className="text-slate-500 text-sm leading-relaxed mb-4">{data.writing[1].description}</p>
+          <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Read on Substack →</span>
+        </motion.a>
+
       </div>
     </div>
   </PageWrapper>
@@ -167,8 +265,10 @@ const About = () => (
 
 const Portfolio = () => (
   <PageWrapper>
-    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-      <div className="mb-20">
+    <div className="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-20">
+
+      {/* Writing */}
+      <div>
         <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Writing</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.writing.map((item, i) => (
@@ -180,19 +280,22 @@ const Portfolio = () => (
               whileHover={{ y: -4 }}
               className={`group p-7 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all shadow-sm ${i === 0 ? 'md:col-span-2' : ''}`}
             >
-              {item.tags.includes("Featured") && (
-                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5 mb-3">
-                  Featured
-                </span>
-              )}
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                {item.tags.includes("Featured") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-0.5">Featured</span>
+                )}
+                {item.tags.includes("New") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-2 py-0.5">New</span>
+                )}
+                {item.tags.includes("Sports") && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 rounded px-2 py-0.5">Sports</span>
+                )}
+                {item.year && <span className="text-xs text-slate-400">{item.year}</span>}
+              </div>
               <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
               <p className="text-slate-500 mb-5 text-[15px] leading-relaxed">{item.description}</p>
               <div className="flex items-center justify-between">
-                <div className="flex gap-2 flex-wrap">
-                  {item.tags.filter(t => t !== "Featured").map(tag => (
-                    <span key={tag} className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">{tag}</span>
-                  ))}
-                </div>
+                <span className="text-xs text-slate-400 bg-slate-50 border border-slate-200 rounded px-2 py-0.5">Substack</span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Read on Substack →</span>
               </div>
             </motion.a>
@@ -200,6 +303,7 @@ const Portfolio = () => (
         </div>
       </div>
 
+      {/* Intelligence Tools */}
       <div>
         <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Intelligence Tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -226,6 +330,40 @@ const Portfolio = () => (
           ))}
         </div>
       </div>
+
+      {/* Sports Tools */}
+      <div>
+        <h2 className="text-3xl font-bold mb-8 tracking-tight text-slate-900">Sports Tools</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {data.sportsTools.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              className="group p-7 bg-slate-50 border border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-md transition-all"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                {item.inProgress && (
+                  <span className="text-xs font-semibold uppercase tracking-wider text-orange-700 bg-orange-50 border border-orange-200 rounded px-2 py-0.5">In Progress</span>
+                )}
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+              <p className="text-slate-600 mb-5 text-[15px] leading-relaxed">{item.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2 flex-wrap">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="text-xs text-slate-500 bg-white border border-slate-200 rounded px-2 py-0.5">{tag}</span>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 shrink-0 ml-4">Launch App →</span>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+
     </div>
   </PageWrapper>
 );
