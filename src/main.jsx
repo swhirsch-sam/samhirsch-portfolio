@@ -9,11 +9,11 @@ const data = {
   tagline: "Uncovering the 'why' behind consumer behavior through data analytics and AI-driven insights.",
   about: "I am a specialist in market research and consumer insights, dedicated to uncovering the 'why' behind consumer behavior. Based in Pittsburgh, I leverage data analytics to translate complex datasets into actionable business strategies.",
   skills: {
-    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "AWS QuickSight", "Google Analytics", "SPSS", "ArcGIS"],
+    technical: ["SQL", "Tableau", "Power BI", "R", "Excel (Advanced)", "Python", "AWS QuickSight", "SPSS", "ArcGIS"],
     analytical: ["Predictive Analytics", "Data Modeling", "Forecasting", "Survey Design", "Dashboard Development", "Conjoint/MaxDiff Analysis", "Sentiment Analysis", "Social Listening", "AI-Powered App Development", "LLM Integration", "A/B Testing"]
   },
   experience: [
-    { company: "First Insight Inc", role: "Insight Specialist", description: "Led consumer research programs for Under Armour, Li & Fung, and Marks & Spencer. Used AI-powered predictive analytics to sharpen demand forecasting." },
+    { company: "First Insight Inc", role: "Insight Specialist", description: "Led consumer research programs for global retail and fashion brands. Used AI-powered predictive analytics to sharpen demand forecasting." },
     { company: "Kantar", role: "Data Strategy and Operations Intern", description: "Built 19 Power BI models for enterprise retail and CPG clients. Published AI implementation research reaching 66 clients." },
     { company: "M@C Discount", role: "Analytics Intern", description: "Analyzed purchasing behavior and promotional systems across 26 warehouse locations." },
     { company: "Slice Consulting", role: "Student Consultant", description: "Pro-bono analytics and consulting for the YMCA of Central New York, diagnosing low donor retention." },
